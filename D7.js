@@ -260,9 +260,24 @@ const movies = [
 console.log(
   "\n---------------------------------------Es10---------------------------------------\n"
 );
-for (let i = 0; i < movies.length; i++) {
-  // console.log(Number(movies[i].Year));
-}
+const filmPiuVecchio = function (gruppofilm) {
+  let filmPiuVec;
+  let anno = [];
+  for (let i = 0; i < gruppofilm.length; i++) {
+    anno.push(Number(gruppofilm[i].Year));
+  }
+  let annominimo = Math.min(...anno);
+  // console.log(anno);
+  // console.log(annominimo);
+  for (let i = 0; i < gruppofilm.length; i++) {
+    if (annominimo === Number(gruppofilm[i].Year)) {
+      console.log("questo è il film più vecchio:", gruppofilm[i].Title);
+      filmPiuVec = gruppofilm[i];
+    }
+  }
+  return filmPiuVec;
+};
+console.log(filmPiuVecchio(movies));
 
 /* ESERCIZIO 11
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
@@ -279,17 +294,25 @@ console.log("nel array film ci sono " + numeroDiFilm(movies) + " elementi");
 /* ESERCIZIO 12
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
+// console.log(
+//   "\n---------------------------------------Es12---------------------------------------\n"
+// );
+// const prendiNomiFilm = function (arr) {
+//   let nomiFilm = [];
+//   for (let i = 0; i < movies.length; i++) {
+//     nomiFilm.push(movies[i].Title);
+//   }
+//   return nomiFilm;
+// };
+// console.log(prendiNomiFilm(movies));
 console.log(
-  "\n---------------------------------------Es12---------------------------------------\n"
+  "\n---------------------------------------Es12conmethods---------------------------------------\n"
 );
-const prendiNomiFilm = function (arr) {
-  let nomiFilm = [];
-  for (let i = 0; i < movies.length; i++) {
-    nomiFilm.push(movies[i].Title);
-  }
-  return nomiFilm;
-};
-console.log(prendiNomiFilm(movies));
+const nomiFilm2 = [];
+movies.forEach((num) => {
+  nomiFilm2.push(num.Title);
+});
+console.log(nomiFilm2);
 
 /* ESERCIZIO 13
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
